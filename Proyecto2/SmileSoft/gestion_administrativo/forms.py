@@ -313,18 +313,16 @@ class CargoForm(forms.ModelForm):
 
 class PacienteAsignadoForm(forms.ModelForm):
    class Meta:
-      model = PacienteTratamientoAsignado
+      model = Paciente
       fields = [
-               #'paciente',
-               'nombre_tratamiento',
+               'tratamientos',
                 ]
       widgets = {
-          'nombre_tratamiento': forms.CheckboxSelectMultiple(attrs={
+          '    tratamientos': forms.CheckboxSelectMultiple(attrs={
               'class': 'form-select2',
               'style': 'width: 30px',
               'multiple': 'multiple'}),
                #  'numero_documento': HiddenInput(attrs={'required': False})
-
                }
       # label = 'Nombre de los tratamientos'
  

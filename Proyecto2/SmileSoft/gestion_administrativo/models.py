@@ -198,6 +198,11 @@ class Paciente(models.Model):
             (ABN, 'AB RH-'),
     ]
     grupo_sanguineo = models.CharField(max_length=100,choices=GRUPOS , verbose_name='Grupo sanguíneo',null= True,)
+    tratamientos = models.ManyToManyField(
+                                             Tratamiento, 
+                                             through='PacienteTratamientoAsignado',
+                                             related_name='paciente_set'
+                                         )
     # farmacos = []
     
     class Meta:
@@ -243,21 +248,26 @@ class PacienteTratamientoAsignado(models.Model):
     paciente = models.ForeignKey(
         Paciente, 
         on_delete=models.CASCADE, 
-        blank=True, null=True
+        blank=True, 
+        null=True,
     )
 
-    nombre_tratamiento = models.ManyToManyField(
+    tratamiento = models.ForeignKey(
         Tratamiento,
-        #on_delete=models.CASCADE,
+        on_delete=models.CASCADE,
         blank=True,
-        #null=True
-        verbose_name='Nombre de los tratamientos'
+        null=True,
+        # verbose_name='Nombre de los tratamientos'
     )
 
     class Meta:
         db_table = 'PacienteTratamientoAsignado'
         verbose_name = 'Tratamieto Asignado al Paciente'
         verbose_name = 'Tratamietos del Paciente'
+
+    # def obterner_tratamientos(self):
+    #     tratamientos = [tratamiento for tratamiento in self.nombre_tratamiento.all().values_list('codigo_tratamiento',flat=True)]
+    #     return tratamientos
 #####################################################################
 
 

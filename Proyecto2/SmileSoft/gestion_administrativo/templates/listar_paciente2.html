@@ -41,14 +41,14 @@
 			<td >{{forloop.counter}}</td>
 			<td>{{ paciente.numero_documento }}</td>
 			<td>{{ paciente.numero_documento.nombre }} {{paciente.numero_documento.apellido}}</td>
-			<!-- <td>{{ paciente.numero_documento.direccion }}</td>
-			<td>{{ paciente.numero_documento.telefono }}</td>
-			<td>{{ paciente.numero_documento.correo_electronico }}</td>
-			<td>{{ paciente.numero_documento.fecha_nacimiento }}</td> -->
 			<td>
-				<a class="btn btn-primary" href="/administrativo/asignar_tratamiento/{{ paciente.numero_documento }}">
+				<a class="btn btn-primary" href="/administrativo/asignar_tratamiento/{{ paciente.id_paciente }}">
 					<i class="bi-pencil-square"></i>
 					Asignar Tratamiento
+				</a>
+				<a class="btn btn-info" href="/tratamiento/tratamientos_asignados/{{ paciente.id_paciente }}">
+					<i class="bi-eye-fill"></i>
+					Tratamientos asignados
 				</a>
 			</td>
 		</tr>
